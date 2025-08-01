@@ -1,0 +1,27 @@
+@startuml
+actor User as User
+User -> App: Preenche o formulário de cadastro e clica em "criar conta"
+App -> Backend: Dispara a requisição para criação de conta
+Backend -> App: Retorna dados do usuário
+App -> User: Realizar o login automático
+User -> App: Clica no botão de contas no menu inferior
+App -> Backend: Enviar uma requisição para listar contas cadastradas
+Backend -> App: Retorna as contas do usuário
+App -> User: Exibe contas 
+User -> App: Clica em "Criar nova conta"
+App -> User: Exibe modal de cadastro de conta
+User -> App: Preenche o formulário e clica em "Salvar"
+App -> Backend: Envia uma requisição de POST que salva os dados da conta
+Backend -> App: Retorna os dados da nova conta cadastrada
+App -> User: Exibe conta criada
+User -> App: Clica na conta criada e visualiza listagem de transações da conta
+App -> Backend: Envia uma requição de GET para listar as transações da conta
+Backend -> App: Retorna a listagem de transações da conta
+App -> User: Exibe a listagem de transações da conta
+User -> App: Clica em adicionar transação
+App -> User: Exibe a modal de criação de transação
+User -> App: Preenche os dados da nova transação e clica em "Salvar"
+App -> Backend: Envia os dados da nova transação via POST
+Backend -> App: Retorna a transação criada
+App -> User: Exibe nova transação
+@enduml

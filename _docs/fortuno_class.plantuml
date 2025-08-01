@@ -1,0 +1,67 @@
+@startuml
+
+class User {
+  id: int
+  name: string
+  phone: string
+  email: string
+  password: string
+  created: datetime
+}
+
+class Category {
+  user: User
+  name: string
+  icon: string
+  color: string 
+}
+
+enum WalletAccountType {
+  BANK_ACCOUNT
+  CREDIT_CARD
+  INVESTMENTS
+}
+class WalletAccount {
+  user: User
+  name: string
+  type: WalletAccountType
+  value: Decimal
+  creditCardLimit: Decimal
+  creditCardExpirationDay: int
+  creditCardCloseDay: int
+}
+
+enum TransactionType {
+  CREDIT 
+  DEBIT
+}
+enum TransactionStatus {
+  PENDING
+  PAID
+  CANCELED
+  DRAFT
+}
+class Transaction {
+  wallet: WalletAccount
+  type: TransactionType
+  name: string
+  description: string
+  status: TransactionStatus
+  originatedAt: datetime
+  value: decimal
+  installmentsEnabled: boolean
+  installments: int
+  current_installment: int
+  category: Category
+}
+
+WalletAccount -- WalletAccountType
+Transaction -- TransactionType
+Transaction -- TransactionStatus
+
+User "1" -- "*" Category
+WalletAccount "0..*" -- "1" User
+WalletAccount "1" -- "0..1" Transaction
+Category "1" -- "0..*" Transaction
+
+@enduml
