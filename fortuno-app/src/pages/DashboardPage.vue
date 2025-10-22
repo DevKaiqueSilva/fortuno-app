@@ -1,54 +1,52 @@
+<script setup lang="ts">
+import ModalWallet from 'src/components/modal/ModalWallet.vue'
+import WalletItem from 'src/components/WalletItem.vue'
+import TransactionList from 'src/components/TransactionList.vue'
+import ChartCategoryBalance from 'src/components/chart/ChartCategoryBalance.vue'
+import { onMounted, ref } from 'vue'
+import { useWalletStore } from 'src/stores/wallet'
+import { useRouter } from 'vue-router'
+
+const walletStore = useWalletStore()
+const router = useRouter()
+
+const showWalletModal = ref(false)
+
+onMounted(async () => {
+  await walletStore.fetchWallets()
+})
+</script>
+
 <template>
   <q-page class="dashboard-page items-center justify-evenly text-dark fit">
     <div class="q-mb-md">
       <div class="text-subtitle1 text-weight-bold">Contas</div>
-      <div class="row">
-        <q-card class="dashboard-account">
-          <span class="text-weight-medium">Nubank</span>
-          <div class="text-right">R$ 100,00</div>
-        </q-card>
+      <div v-if="walletStore.getWallets.length > 0" class="row">
+        <div 
+          v-for="(wallet, i) in walletStore.getWallets"
+          :key="`wallet-${i}`"
+          class="col-4 q q-pa-xs"
+        >
+          <wallet-item :wallet="wallet" dense key=""/>
+        </div>
       </div>
+      <q-btn
+        v-else
+        color="primary"
+        label="Nova conta"
+        class="fit q-mt-sm"
+        text-color="dark"
+        @click="showWalletModal = true"
+      />
+      <ModalWallet v-model="showWalletModal" />
     </div>
-    <div class="q-mb-md">
-      <div class="text-subtitle1 text-weight-bold">Gastos por categoria</div>
-      <div id="chart">
-        <ApexChart type="pie" width="380" :options="chartOptions" :series="series"></ApexChart>
-      </div>
-    </div>
+    <chart-category-balance class="q-mb-md" />
     <div>
       <div class="text-subtitle1 text-weight-bold q-mb-xs">Últimas transações</div>
-      <TransactionItem />
+      <transaction-list custom-change-page @change-page="router.push('/transactions')" />
     </div>
   </q-page>
 </template>
-
-<script setup lang="ts">
-import TransactionItem from 'src/components/TransactionItem.vue';
-import ApexChart from 'vue3-apexcharts';
-import { ref } from 'vue';
-
-const series = ref([44, 55, 13, 43, 22]);
-const chartOptions = ref({
-  chart: {
-    width: 380,
-    type: 'pie',
-  },
-  labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
-  responsive: [
-    {
-      breakpoint: 480,
-      options: {
-        chart: {
-          width: '90%',
-        },
-        legend: {
-          position: 'right',
-        },
-      },
-    },
-  ],
-});
-</script>
 
 <style lang="sass">
 .dashboard

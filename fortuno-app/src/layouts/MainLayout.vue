@@ -1,5 +1,17 @@
 <script setup lang="ts">
 import MenuFooter from 'src/components/MenuFooter.vue';
+import HeaderResume from 'src/components/header/HeaderResume.vue';
+import HeaderWallet from 'src/components/header/HeaderWallet.vue';
+import { useAuthStore } from 'src/stores/auth';
+import { onBeforeMount } from 'vue';
+import { useRoute } from 'vue-router';
+
+const authStore = useAuthStore()
+const route = useRoute();
+
+onBeforeMount(async () => {
+  await authStore.fetchUser();
+});
 </script>
 
 <template>
@@ -9,16 +21,9 @@ import MenuFooter from 'src/components/MenuFooter.vue';
         src="../assets/logo-icon.png"
         style="height: 90px; width: 100px; display: block; margin: auto"
       />
-      <div class="text-center text-h5 text-weight-bold text-white q-mt-xs q-mb-sm">R$ 25898,00</div>
-      <div class="row text-subtitle1">
-        <div class="col-6 text-green text-right q-pr-sm" style="border-right: 1px solid white">
-          <q-icon name="arrow_upward_alt" color="green" class="inline-block" />
-          R$2000,00
-        </div>
-        <div class="col-6 text-red text-left q-pl-sm">
-          R$2000,00
-          <q-icon name="arrow_downward_alt" color="red" size="30" class="inline-block" />
-        </div>
+      <div style="max-width: 400px;margin: auto;">
+        <header-wallet v-if="route.name == 'wallet-detail'" />
+        <header-resume v-else />
       </div>
     </div>
     <q-card class="main-bg-card">

@@ -18,3 +18,6 @@ class Category(OwnedByUser):
     default_platform = models.BooleanField(
         default=False
     )
+    
+    def __str__(self):
+        return self.name

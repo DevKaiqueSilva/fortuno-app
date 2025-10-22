@@ -4,7 +4,6 @@ from django.utils import timezone
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 from app.models.base import OwnedByUser
-from app.models.category import Category
 
 class WalletAccount(OwnedByUser):
     class WalletAccountType(models.TextChoices):
@@ -14,7 +13,6 @@ class WalletAccount(OwnedByUser):
 
     name = models.CharField(
         max_length=120,
-
     )
     type = models.CharField(
         max_length=30,
@@ -49,6 +47,11 @@ class Transaction(OwnedByUser):
         PAID = "paid"
         DRAFT = "draft"
 
+    name = models.CharField(
+        max_length=120,
+        blank=True,
+        default="",
+    )
     value = models.DecimalField(
         max_digits=20,
         decimal_places=2,
@@ -64,9 +67,9 @@ class Transaction(OwnedByUser):
         choices=TransactionStatus.choices,
         default=TransactionStatus.PENDING,
     )
-    originated_at = models.DateField(
+    originated_at = models.DateTimeField(
         null=True,
-        default=timezone.now(),
+        default=None,
     )
     description = models.CharField(
         max_length=200,
@@ -90,11 +93,12 @@ class Transaction(OwnedByUser):
         related_name="transactions",
     )
     category = models.ForeignKey(
-        Category,
+        'app.Category',
         on_delete=models.CASCADE,
         related_name="transactions",
         null=True,
         blank=True,
     )
     def __str__(self):
-        return f"{self.type} - {self.amount} - {self.wallet_account.name}"
+        return f"{self.type} - {self.value} - {self.wallet_account.name}"
+    

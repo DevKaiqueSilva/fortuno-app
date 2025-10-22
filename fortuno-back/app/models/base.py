@@ -1,6 +1,5 @@
 import uuid
 from django.db import models
-from app.models.user import User
 
 class OwnedByUser(models.Model):
     code = models.UUIDField(
@@ -10,7 +9,7 @@ class OwnedByUser(models.Model):
         db_index=True,
     )
     user = models.ForeignKey(
-        User, 
+        'app.User', 
         on_delete=models.CASCADE,
         null=True,
         default=None
@@ -22,6 +21,18 @@ class OwnedByUser(models.Model):
         auto_now=True,
         editable=False,
     )
+    deleted_at = models.DateTimeField(
+        null=True,
+        blank=True,
+        db_index=True,
+    )
+    deleted_by = models.ForeignKey(
+        'app.User',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="%(class)s_deleted_by",
+    )
 
     """
     Abstract base class for models that are owned by a user.
@@ -29,3 +40,4 @@ class OwnedByUser(models.Model):
     """
     class Meta:
         abstract = True
+        ordering = ['-created']

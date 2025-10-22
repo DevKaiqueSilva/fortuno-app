@@ -1,5 +1,8 @@
+<script setup lang="ts">
+import TransactionList from 'src/components/TransactionList.vue'
+</script>
 <template>
   <q-page class="transactions-page items-center justify-evenly text-dark fit">
-    Transactions
+    <transaction-list />
   </q-page>
 </template>

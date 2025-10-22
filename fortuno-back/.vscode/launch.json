@@ -1,0 +1,52 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            },
+            "justMyCode": true
+        },
+        {
+            "name": "Docker: Run Server",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/docker_runner.js",
+            "args": ["up"],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Docker: Run Tests",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/docker_runner.js",
+            "args": ["exec", "web", "python", "manage.py", "test"],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Docker: Make Migrations",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/docker_runner.js",
+            "args": ["exec", "web", "python", "manage.py", "makemigrations"],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Docker: Migrate",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/docker_runner.js",
+            "args": ["exec", "web", "python", "manage.py", "migrate"],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        }
+    ]
+}

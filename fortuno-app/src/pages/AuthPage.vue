@@ -1,3 +1,9 @@
+<script setup lang="ts">
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+</script>
+
 <template>
   <q-page class="auth-page row items-center justify-evenly fit">
     <q-img
@@ -15,7 +21,7 @@
       label="Acessar conta"
       class="fit q-mb-md"
       text-color="dark"
-      @click="$router.push('/login')"
+      @click="router.push('/login')"
     />
     <q-btn
       color="transparent"
@@ -23,9 +29,7 @@
       label="Cadastre-se"
       class="fit text-underline"
       text-color="white"
-      @click="$router.push('/register')"
+      @click="router.push('/register')"
     />
   </q-page>
 </template>
-
-<script setup lang="ts"></script>
