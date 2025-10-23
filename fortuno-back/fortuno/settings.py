@@ -51,7 +51,6 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -60,7 +59,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-
+    "corsheaders.middleware.CorsMiddleware",
+    "app.middleware.CorsMiddleware",
 ]
 
 ROOT_URLCONF = "fortuno.urls"
@@ -163,12 +163,11 @@ REST_FRAMEWORK = {
 }
 
 # CORS settings
-if os.environ.get('CORS_ALLOWED_ORIGINS'):
-    CORS_ALLOWED_ORIGINS = os.environ.get('CORS_ALLOWED_ORIGINS').split(',')
-    CORS_ALLOW_ALL_ORIGINS = False
-else:
-    CORS_ALLOW_ALL_ORIGINS = True
-
+CORS_ALLOWED_ORIGINS = [
+    "https://fortuno-app.vercel.app",
+    "http://localhost:9000",
+    "http://localhost"
+]
 CORS_ALLOW_CREDENTIALS = True
 
 # Custom User Model
