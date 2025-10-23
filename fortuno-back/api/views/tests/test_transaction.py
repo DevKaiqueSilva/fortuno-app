@@ -91,7 +91,8 @@ class TestTransactionView(APITestCase):
                             "type": "bank",
                             "creditCardLimit": 0,
                             "creditCardExpirationDay": 0,
-                            "creditCardCloseDay": 0
+                            "creditCardCloseDay": 0,
+                            "balance": {"totalCredit": 0, "totalDebit": -10000},
                         },
                         "category": {
                             "code": str(self.category.code),
@@ -146,7 +147,8 @@ class TestTransactionView(APITestCase):
                     "type": "bank",
                     "creditCardLimit": 0,
                     "creditCardExpirationDay": 0,
-                    "creditCardCloseDay": 0
+                    "creditCardCloseDay": 0,
+                    "balance": {"totalCredit": 0, "totalDebit": -10000},
                 },
                 "category": {
                     "code": str(self.category.code),
@@ -199,7 +201,8 @@ class TestTransactionView(APITestCase):
                     "type": "bank",
                     "creditCardLimit": 0,
                     "creditCardExpirationDay": 0,
-                    "creditCardCloseDay": 0
+                    "creditCardCloseDay": 0,
+                    "balance": {"totalCredit": 0, "totalDebit": -5000},
                 },
                 "category": {
                     "code": str(self.category.code),
@@ -272,7 +275,8 @@ class TestTransactionView(APITestCase):
                     "type": "bank",
                     "creditCardLimit": 0,
                     "creditCardExpirationDay": 0,
-                    "creditCardCloseDay": 0
+                    "creditCardCloseDay": 0,
+                    "balance": {"totalCredit": 0, "totalDebit": -15000},
                 },
                 "category": {
                     "code": str(self.category.code),

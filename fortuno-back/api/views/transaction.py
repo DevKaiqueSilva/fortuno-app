@@ -22,3 +22,4 @@ class TransactionViewSet(BaseOwnedByUserModelViewSet):
     filterset_class = TransactionFilterView
     queryset = Transaction.objects.all()
     search_fields = ["name"]
+    ordering = ["-originated_at"]
