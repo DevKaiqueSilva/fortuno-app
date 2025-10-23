@@ -2,6 +2,10 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist/spa",
   "framework": "vite",
+  "env": {
+    "VUE_ROUTER_MODE": "history",
+    "API_URL": "https://fortunoapi.railway.app"
+  },
   "rewrites": [
     {
       "source": "/(.*)",
