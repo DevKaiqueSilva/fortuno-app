@@ -166,6 +166,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:9000",
     "http://127.0.0.1:9000",
     "https://fortuno-app.vercel.app",
+    "https://fortuno-app.vercel.app/",
 ]
 
 if os.environ.get('FRONTEND_URL'):
