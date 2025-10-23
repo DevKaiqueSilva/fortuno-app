@@ -161,19 +161,9 @@ REST_FRAMEWORK = {
     ],
 }
 
-# CORS settings - Railway workaround
-if os.environ.get('RAILWAY_ENVIRONMENT'):
-    CORS_ALLOW_ALL_ORIGINS = True
-else:
-    CORS_ALLOWED_ORIGINS = [
-        "http://localhost:9000",
-        "http://127.0.0.1:9000",
-        "https://fortuno-app.vercel.app",
-    ]
-    CORS_ALLOW_ALL_ORIGINS = False
-
+# CORS settings
+CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
-CORS_PREFLIGHT_MAX_AGE = 86400
 
 # Custom User Model
 AUTH_USER_MODEL = "app.User"
