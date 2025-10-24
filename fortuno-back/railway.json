@@ -4,7 +4,7 @@
     "builder": "NIXPACKS"
   },
   "deploy": {
-    "startCommand": "python manage.py migrate && python manage.py collectstatic --noinput && echo 'Starting Gunicorn...' && gunicorn fortuno.wsgi:application --bind 0.0.0.0:$PORT --log-level info --access-logfile - --error-logfile - --timeout 120",
+    "startCommand": "python manage.py migrate && python manage.py collectstatic --noinput && echo 'Starting server on port $PORT' && gunicorn fortuno.wsgi:application --bind 0.0.0.0:$PORT --workers 1 --timeout 30 --log-level debug",
     "restartPolicyType": "ON_FAILURE",
     "restartPolicyMaxRetries": 10
   }
