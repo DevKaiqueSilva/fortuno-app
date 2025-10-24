@@ -1,15 +1,14 @@
 {
   "$schema": "https://railway.com/railway.schema.json",
   "build": {
-    "builder": "NIXPACKS",
-    "buildCommand": "pip install -r requirements.txt"
+    "builder": "NIXPACKS"
   },
   "deploy": {
     "workingDirectory": "/app"
   },
   "runtime": "V2",
   "numReplicas": 1,
-  "startCommand": "python reset_db.py && python manage.py migrate && python manage.py collectstatic --noinput && gunicorn fortuno.wsgi --bind 0.0.0.0:$PORT",
+  "startCommand": "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn fortuno.wsgi --bind 0.0.0.0:$PORT",
   "sleepApplication": false,
   "restartPolicyType": "ON_FAILURE",
   "restartPolicyMaxRetries": 10
