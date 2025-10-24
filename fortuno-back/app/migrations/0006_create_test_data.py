@@ -148,5 +148,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunPython(create_test_data, reverse_test_data),
+        # migrations.RunPython(create_test_data, reverse_test_data),
     ]
