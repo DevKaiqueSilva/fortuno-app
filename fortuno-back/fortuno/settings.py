@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 
 # Railway.app hostname
 if os.environ.get('RAILWAY_ENVIRONMENT'):
-    ALLOWED_HOSTS = ['.railway.app']
+    ALLOWED_HOSTS = ['.railway.app', '.up.railway.app', 'fortuno-app-production.up.railway.app']
 else:
     ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 

@@ -4,7 +4,7 @@
   "framework": "vite",
   "env": {
     "VUE_ROUTER_MODE": "history",
-    "API_URL": "https://fortunoapi.railway.app"
+    "API_URL": "https://fortuno-app-production.up.railway.app"
   },
   "rewrites": [
     {
