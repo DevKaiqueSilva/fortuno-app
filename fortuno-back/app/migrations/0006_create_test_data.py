@@ -14,6 +14,7 @@ def create_test_data(apps, schema_editor):
     
     # Create test user
     user = User.objects.create(
+        username='testapp@gmail.com',
         email='testapp@gmail.com',
         password=make_password('Test123@'),
         first_name='Testildo',
