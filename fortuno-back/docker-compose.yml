@@ -1,6 +1,17 @@
 version: '3.8'
 
 services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: fortuno
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
   web:
     build: .
     ports:
@@ -9,3 +20,9 @@ services:
       - .:/app
     environment:
       - DEBUG=1
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/fortuno
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
