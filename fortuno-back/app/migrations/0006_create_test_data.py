@@ -14,9 +14,9 @@ def create_test_data(apps, schema_editor):
     
     # Create test user
     user = User.objects.create_superuser(
-        username='testapp@gmail.com',
-        email='testapp@gmail.com',
-        password='Test123@',
+        username='admin@gmail.com',
+        email='admin@gmail.com',
+        password='admin',
         first_name='Testildo',
         last_name='Tester',
         is_staff=True,
