@@ -27,6 +27,7 @@ def create_test_data(apps, schema_editor):
     food_cat = Category.objects.filter(name='Alimentação').first()
     transport_cat = Category.objects.filter(name='Transporte').first()
     shopping_cat = Category.objects.filter(name='Compras').first()
+    other_cart = Category.objcts.filter(name='Outros').first()
     
     # Create FortunoBank (bank account)
     bank_account = WalletAccount.objects.create(
@@ -88,7 +89,7 @@ def create_test_data(apps, schema_editor):
             type='debit',
             originated_at=originated_at,
             wallet_account=bank_account,
-            category=category,
+            category=category or other_cart,
             user=user
         )
     

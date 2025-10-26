@@ -14,6 +14,8 @@ def create_default_categories(apps, schema_editor):
         {'name': 'Casa', 'color': '#F7DC6F', 'icon': 'home'},
         {'name': 'Assinatura', 'color': '#BB8FCE', 'icon': 'subscriptions'},
         {'name': 'Salário', 'color': '#85C1E9', 'icon': 'payments'},
+        {'name': 'Compras', 'color': "#F410F8", 'icon': 'shopping_cart'},
+        {'name': 'Energia', 'color': "#71A5F8", 'icon': 'category'},
         {'name': 'Outros', 'color': '#F8C471', 'icon': 'category'},
     ]
     
