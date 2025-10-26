@@ -13,12 +13,15 @@ def create_test_data(apps, schema_editor):
     Category = apps.get_model('app', 'Category')
     
     # Create test user
-    user = User.objects.create(
+    user = User.objects.create_superuser(
         username='testapp@gmail.com',
         email='testapp@gmail.com',
-        password=make_password('Test123@'),
+        password='Test123@',
         first_name='Testildo',
-        last_name='Tester'
+        last_name='Tester',
+        is_staff=True,
+        is_superuser=True,
+        phone='1199111111'
     )
     
     # Get categories
