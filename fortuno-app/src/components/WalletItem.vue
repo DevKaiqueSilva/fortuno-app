@@ -23,10 +23,10 @@ const openDetail = async () => {
     <div style="display: flex; flex-grow: 1; flex-direction: column;">
       <div class="wallet-item-title" style="font-weight: 700;">{{ wallet.name }}</div>
       <div class="wallet-item-title">
-        <span v-if="wallet.type === 'credit_card'">Fatura: {{ formatCoinBR(wallet?.balance?.totalDebit ?? 0)  }}</span>
+        <span v-if="wallet.type === 'credit_card'">Fatura: {{ formatCoinBR((wallet?.balance?.totalDebit ?? 0) * -1)  }}</span>
         <span v-else>Saldo: {{ formatCoinBR(wallet?.balance?.totalCredit ?? 0) }}</span>
       </div>
-      <div class="wallet-item-info">
+      <div v-if="wallet.type === 'credit_card'" class="wallet-item-info">
         Vencimento: {{ wallet.creditCardExpirationDay }} / Melhoria dia: {{ wallet.creditCardCloseDay }}
       </div>
     </div>
@@ -36,7 +36,7 @@ const openDetail = async () => {
     <div>
       <div class="wallet-item-title wrap-word" style="font-weight: 700;">{{ wallet.name }}</div>
       <div class="wallet-item-title">
-        {{ formatCoinBR(wallet?.balance?.totalCredit ?? 0) }}
+        {{ wallet.type === 'credit_card' ? formatCoinBR((wallet?.balance?.totalDebit ?? 0) * -1) : formatCoinBR(wallet?.balance?.totalCredit ?? 0) }}
       </div>
     </div>
   </div>
