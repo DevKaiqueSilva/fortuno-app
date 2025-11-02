@@ -67,6 +67,7 @@ const onSubmit = async () => {
           v-model="userInfo.email"
           filled
           type="email"
+          data-cy="email-input"
           label="E-mail"
           dark
           class="q-mb-lg"
@@ -79,6 +80,7 @@ const onSubmit = async () => {
           filled
           label="Senha"
           dark
+          data-cy="password-input"
           :type="showPassword ? 'text' : 'password'"
           class="q-mb-md"
           :rules="[rules.required]"
@@ -97,7 +99,14 @@ const onSubmit = async () => {
           <a class="white-text" @click="router.push('/recovery-password')">Esqueci a senha</a>
         </div>
       </div>
-      <q-btn color="primary" label="Acessar" class="fit q-mt-xl" text-color="dark" type="submit" />
+      <q-btn
+        color="primary"
+        data-cy="login-button"
+        label="Acessar"
+        class="fit q-mt-xl"
+        text-color="dark"
+        type="submit"
+      />
     </q-form>
   </q-page>
 </template>

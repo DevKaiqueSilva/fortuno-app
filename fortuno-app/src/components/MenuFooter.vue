@@ -25,8 +25,8 @@ onMounted(() => {
       indicator-color="transparent"
       class="text-grey-8"
     >
-      <q-tab name="dashboard" icon="home" @click="router.push('/')" />
-      <q-tab name="transactions" icon="attach_money" @click="router.push('/transactions')" />
+      <q-tab name="dashboard" data-cy="dashboard-menu" icon="home" @click="router.push('/')" />
+      <q-tab name="transactions" icon="attach_money" data-cy="transactions-menu"  @click="router.push('/transactions')" />
       <q-tab>
         <q-btn
           icon="add"
@@ -39,8 +39,8 @@ onMounted(() => {
         />
         <modal-transaction v-model:visible="showTransactionModal" />
       </q-tab>
-      <q-tab name="wallet" icon="account_balance_wallet" @click="router.push('/wallet')" />
-      <q-tab name="profile" icon="account_circle" @click="router.push('/profile')" />
+      <q-tab name="wallet" icon="account_balance_wallet" data-cy="wallets-menu" @click="router.push('/wallet')" />
+      <q-tab name="profile" icon="account_circle" data-cy="settings-menu" @click="router.push('/profile')" />
     </q-tabs>
   </q-footer>
 </template>

@@ -15,13 +15,14 @@ const logout = () => {
 
 <template>
   <q-page class="transactions-page items-center justify-evenly text-dark fit">  
-    <q-btn outline label="Minhas categorias" class="fit q-mb-md" @click="router.push('/categories')"/>
+    <q-btn outline label="Minhas categorias" data-cy="categories-menu" class="fit q-mb-md" @click="router.push('/categories')"/>
     <q-btn outline label="Meu perfil" class="fit q-mb-md" @click="router.push('/profile-info')" />
     <q-btn
       color="primary"
       label="Sair da conta"
       class="fit q-mt-sm"
       text-color="dark"
+      data-cy="logout-menu"
       @click="logout"
     />
   </q-page>

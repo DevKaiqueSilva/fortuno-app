@@ -99,9 +99,6 @@ pip install -r requirements.txt
 # Executar migrações
 python manage.py migrate
 
-# Criar superusuário (opcional)
-python manage.py createsuperuser
-
 # Executar servidor de desenvolvimento
 python manage.py runserver
 ```

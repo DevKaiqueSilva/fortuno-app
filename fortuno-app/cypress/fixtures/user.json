@@ -1,0 +1,12 @@
+{
+  "testUser": {
+    "email": "admin@gmail.com",
+    "password": "admin"
+  },
+  "newUser": {
+    "email": "novo@teste.com",
+    "password": "NovaSenh@123",
+    "name": "Novo Usuario",
+    "phone": "(11) 99999-9999"
+  }
+}

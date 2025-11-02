@@ -12,9 +12,7 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-EXPOSE $PORT
+EXPOSE 8000
 
 # Run migrations and start gunicorn
-CMD python manage.py migrate && \
-    python manage.py collectstatic --noinput && \
-    gunicorn fortuno.wsgi:application --bind 0.0.0.0:$PORT
+CMD sh -c "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn fortuno.wsgi:application --bind 0.0.0.0:${PORT:-8000}"

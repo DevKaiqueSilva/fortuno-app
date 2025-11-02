@@ -21,6 +21,7 @@ const router = useRouter()
       label="Acessar conta"
       class="fit q-mb-md"
       text-color="dark"
+      data-cy="login-link"
       @click="router.push('/login')"
     />
     <q-btn
@@ -29,6 +30,7 @@ const router = useRouter()
       label="Cadastre-se"
       class="fit text-underline"
       text-color="white"
+      data-cy="register-link"
       @click="router.push('/register')"
     />
   </q-page>
